@@ -1,6 +1,7 @@
 package org.fossasia.phimpme.uploadhistory;
 
 import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,7 @@ public class UploadHistoryAdapter extends RecyclerView.Adapter<UploadHistoryAdap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
 
         realmResult = realm.where(UploadHistoryRealmModel.class);
 
@@ -55,6 +56,31 @@ public class UploadHistoryAdapter extends RecyclerView.Adapter<UploadHistoryAdap
             Glide.with(getApplicationContext()).load(uri)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(holder.uploadImage);
+
+            holder.uploadCardView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+//                    UploadHistoryRealmModel model=realmResult.equalTo()
+                    realm.beginTransaction();
+//                    realm.delete(realmResult);
+//                    Realm.delet/eRealm(realmResult);
+//                    final RealmResults<UploadHistoryRealmModel> students = realm.where(UploadHistoryRealmModel.class).findAll();
+//
+//                    RealmResults realmResults = students .where().equalTo("dateTime",prefs.getString(,"jpt")).equalTo("userName",prefs.getString(QRActivity.USER_NAME_AFTER_LOGIN,"jpt")).findFirst();
+//
+//                    if(realmResults!=null) {
+////
+////                        if (!realm.isInTransaction())
+////                        {
+////                            realm.beginTransaction();
+////                        }
+//
+//                        realmResults.deleteFromRealm(position);
+//                        realm.commitTransaction();
+//                    }
+                    return true;
+                }
+            });
         }
     }
 
@@ -69,6 +95,9 @@ public class UploadHistoryAdapter extends RecyclerView.Adapter<UploadHistoryAdap
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.upload_card_view)
+        CardView uploadCardView;
+
         @BindView(R.id.upload_account_name)
         TextView uploadAccountName;
 

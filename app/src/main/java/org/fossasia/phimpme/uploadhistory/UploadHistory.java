@@ -101,5 +101,22 @@ public class UploadHistory extends ThemedActivity {
                 onBackPressed();
             }
         });
+//        toolbar.inflateMenu(R.menu.menu_upload_history);
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_upload_history,menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        if(item.getItemId()==R.id.delete_upload_history){
+//            uploadResults=null;
+//            uploadHistoryAdapter.notifyDataSetChanged();
+//            // TODO: 4/10/17
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }
